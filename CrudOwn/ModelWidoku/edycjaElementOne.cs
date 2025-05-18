@@ -99,7 +99,7 @@ namespace CrudOwn.ModelWidoku
 
 
 
-        #region
+        #region dodaj
 
         private RelayCommand dodaj;
         
@@ -129,7 +129,7 @@ namespace CrudOwn.ModelWidoku
 
         #endregion
 
-
+        #region odejmij
         private RelayCommand odejmij;
 
         public ICommand Odejmij
@@ -151,18 +151,21 @@ namespace CrudOwn.ModelWidoku
             model.zawartośćListy = string.Join("\n", mojaLista);
             onPropertyChanged(nameof(zawartośćListy));
         }
-        
-        private RelayCommand wyświetl;
 
-        public ICommand Wyświetl
+        #endregion 
+
+        #region edytuj
+        private RelayCommand edytuj;
+
+        public ICommand Edytuj
         {
             get
             {
-                if (wyświetl == null)
+                if (edytuj == null)
                 {
-                    wyświetl = new RelayCommand(PerformWyświetl);
+                    edytuj= new RelayCommand(PerformWyświetl);
                 }
-                return wyświetl;
+                return edytuj;
             }
         }
 
@@ -178,15 +181,15 @@ namespace CrudOwn.ModelWidoku
 
             MessageBox.Show(model.indeks.ToString());
         }
-        
 
-     }
-
-
+        #endregion
+    }
 
 
 
-    
+
+
+
 }
 
 

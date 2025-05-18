@@ -12,7 +12,7 @@
     </Window.DataContext>
     <Grid>
         <TextBox />
-        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="469,217,0,0" VerticalAlignment="Top" Command="{Binding Dodaj}" RenderTransformOrigin="0.5,0.5">
+        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="458,217,0,0" VerticalAlignment="Top" Command="{Binding Dodaj}" RenderTransformOrigin="0.5,0.5" Width="47">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -26,7 +26,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="206,293,0,0" VerticalAlignment="Top" Height="69" Width="210"  Text="{Binding zawartośćListy }"/>
         <Button Content="Odejmij" HorizontalAlignment="Left" Margin="464,254,0,0" VerticalAlignment="Top" Command="{Binding Odejmij}"/>
         <ComboBox HorizontalAlignment="Left" Margin="88,135,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding mojaLista}" SelectedItem="{Binding selectedItem, Mode=TwoWay}"/>
-        <Button Content="edytuj" HorizontalAlignment="Left" Margin="128,171,0,0" VerticalAlignment="Top" Command="{Binding Wyświetl}"/>
+        <Button Content="Edytuj" HorizontalAlignment="Left" Margin="464,293,0,0" VerticalAlignment="Top" Command="{Binding Edytuj}" RenderTransformOrigin="0.494,0.563" Width="46"/>
 
     </Grid>
 </Window>
