@@ -9,10 +9,12 @@ using System.Threading.Tasks;
     public class elementOne
     {
         public string name;
-        public elementOne(string name="")
+        public string zawartośćListy; 
+    public elementOne(string name="", string zawartośćListy="")
 
         {
             this.name = name;
-        }
+            this.zawartośćListy = zawartośćListy;
+    }
     }
 

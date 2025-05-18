@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Xml.Linq;
 
 namespace CrudOwn.ModelWidoku
 {
@@ -32,14 +33,27 @@ namespace CrudOwn.ModelWidoku
                 onPropertyChanged(nameof(name));
             }
         }
-       
+
+
+
+
+        public string zawartośćListy
+        {
+            get
+            {
+                return model.zawartośćListy;
+            }
+            set
+            {
+                model.zawartośćListy = value;
+                onPropertyChanged(nameof(zawartośćListy));
+            }
+        }
+
+
         
 
-
-
-
-      
-        private RelayCommand dodaj;
+private RelayCommand dodaj;
       
         public ICommand Dodaj
         {
@@ -58,9 +72,13 @@ namespace CrudOwn.ModelWidoku
 
         {
             
-            mojaLista.Add(model.name.ToString());
-            string zawartoscListy = string.Join("\n", mojaLista);
-            MessageBox.Show(zawartoscListy, "Zawartość ObservableCollection");
+            mojaLista.Add(model.name);
+            
+            model.zawartośćListy = string.Join("\n", mojaLista);
+            onPropertyChanged(nameof(zawartośćListy));
+
+
+
         }
 
 
