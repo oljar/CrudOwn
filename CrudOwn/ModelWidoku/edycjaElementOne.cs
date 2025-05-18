@@ -19,7 +19,9 @@ namespace CrudOwn.ModelWidoku
     {
         public elementOne model = new elementOne("");
 
-        
+       
+
+
 
         public string name
         {
@@ -76,6 +78,27 @@ namespace CrudOwn.ModelWidoku
             }
         }
 
+
+
+
+
+        public int indeks
+        {
+            get
+            {
+                return model.indeks;
+            }
+            set
+            {
+                model.indeks = value;
+                onPropertyChanged(nameof(indeks));
+            }
+        }
+
+
+
+
+
         #region
 
         private RelayCommand dodaj;
@@ -123,7 +146,8 @@ namespace CrudOwn.ModelWidoku
 
         private void PerformOdejmij(object commandParameter)
         {
-            mojaLista.RemoveAt(mojaLista.Count -1 );
+            model.indeks = model.mojaLista.IndexOf(model.selectedItem);
+            mojaLista.RemoveAt(model.indeks );
             model.zawartośćListy = string.Join("\n", mojaLista);
             onPropertyChanged(nameof(zawartośćListy));
         }
@@ -143,9 +167,18 @@ namespace CrudOwn.ModelWidoku
         }
 
         private void PerformWyświetl(object commandParameter) 
+
         {
-            MessageBox.Show(model.selectedItem);
+
+            model.indeks = model.mojaLista.IndexOf(model.selectedItem);
+            model.mojaLista[model.indeks] = model.name;
+            model.zawartośćListy = string.Join("\n", mojaLista);
+            onPropertyChanged(nameof(zawartośćListy));
+           
+
+            MessageBox.Show(model.indeks.ToString());
         }
+        
 
      }
 
