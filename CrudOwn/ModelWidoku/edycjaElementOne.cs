@@ -19,7 +19,7 @@ namespace CrudOwn.ModelWidoku
     {
         public elementOne model = new elementOne("");
 
-        ObservableCollection<string> mojaLista = new ObservableCollection<string>();
+        
 
         public string name
         {
@@ -50,11 +50,37 @@ namespace CrudOwn.ModelWidoku
             }
         }
 
+        public ObservableCollection<string> mojaLista
+        {
+            get
+            {
+                return model.mojaLista;
+            }
+            set
+            {
+                model.mojaLista = value;
+                
+            }
+        }
 
+        public string selectedItem
+        {
+            get
+            {
+                return model.selectedItem;
+            }
+            set
+            {
+                model.selectedItem = value;
+                onPropertyChanged(nameof(selectedItem));
+            }
+        }
+
+        #region
+
+        private RelayCommand dodaj;
         
-
-private RelayCommand dodaj;
-      
+        
         public ICommand Dodaj
         {
             get
@@ -71,18 +97,63 @@ private RelayCommand dodaj;
         private void PerformDodaj(object commandParameter)
 
         {
-            
-            mojaLista.Add(model.name);
-            
+           
+            mojaLista.Add(model.name); 
             model.zawartośćListy = string.Join("\n", mojaLista);
             onPropertyChanged(nameof(zawartośćListy));
 
-
-
         }
 
+        #endregion
 
-    }
+
+        private RelayCommand odejmij;
+
+        public ICommand Odejmij
+        {
+            get
+            {
+                if (odejmij == null)
+                {
+                    odejmij = new RelayCommand(PerformOdejmij);
+                }
+                return odejmij;
+            }
+        }
+
+        private void PerformOdejmij(object commandParameter)
+        {
+            mojaLista.RemoveAt(mojaLista.Count -1 );
+            model.zawartośćListy = string.Join("\n", mojaLista);
+            onPropertyChanged(nameof(zawartośćListy));
+        }
+        
+        private RelayCommand wyświetl;
+
+        public ICommand Wyświetl
+        {
+            get
+            {
+                if (wyświetl == null)
+                {
+                    wyświetl = new RelayCommand(PerformWyświetl);
+                }
+                return wyświetl;
+            }
+        }
+
+        private void PerformWyświetl(object commandParameter) 
+        {
+            MessageBox.Show(model.selectedItem);
+        }
+
+     }
+
+
+
+
+
+    
 }
 
 

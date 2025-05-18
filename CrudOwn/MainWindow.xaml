@@ -12,9 +12,21 @@
     </Window.DataContext>
     <Grid>
         <TextBox />
-        <Button Content="Button" HorizontalAlignment="Left" Margin="444,217,0,0" VerticalAlignment="Top" Command="{Binding Dodaj}"/>
+        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="469,217,0,0" VerticalAlignment="Top" Command="{Binding Dodaj}" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.492"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
         <TextBox HorizontalAlignment="Left" Margin="400,171,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="164" Height="41" Text="{Binding name}"/>
         <TextBlock HorizontalAlignment="Left" Margin="206,293,0,0" VerticalAlignment="Top" Height="69" Width="210"  Text="{Binding zawartośćListy }"/>
+        <Button Content="Odejmij" HorizontalAlignment="Left" Margin="464,254,0,0" VerticalAlignment="Top" Command="{Binding Odejmij}"/>
+        <ComboBox HorizontalAlignment="Left" Margin="88,135,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding mojaLista}" SelectedItem="{Binding selectedItem, Mode=TwoWay}"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="128,171,0,0" VerticalAlignment="Top" Command="{Binding Wyświetl}"/>
 
     </Grid>
 </Window>
