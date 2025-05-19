@@ -1,4 +1,5 @@
-﻿using Kolory_WPF.ModelWidoku;
+﻿using CrudOwn.Model;
+using Kolory_WPF.ModelWidoku;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,7 @@ namespace CrudOwn.ModelWidoku
     {
         public elementOne model = new elementOne("");
 
-       
+
 
 
 
@@ -61,7 +62,7 @@ namespace CrudOwn.ModelWidoku
             set
             {
                 model.mojaLista = value;
-                
+
             }
         }
 
@@ -102,8 +103,8 @@ namespace CrudOwn.ModelWidoku
         #region dodaj
 
         private RelayCommand dodaj;
-        
-        
+
+
         public ICommand Dodaj
         {
             get
@@ -120,8 +121,8 @@ namespace CrudOwn.ModelWidoku
         private void PerformDodaj(object commandParameter)
 
         {
-           
-            mojaLista.Add(model.name); 
+
+            mojaLista.Add(model.name);
             model.zawartośćListy = string.Join("\n", mojaLista);
             onPropertyChanged(nameof(zawartośćListy));
 
@@ -147,7 +148,7 @@ namespace CrudOwn.ModelWidoku
         private void PerformOdejmij(object commandParameter)
         {
             model.indeks = model.mojaLista.IndexOf(model.selectedItem);
-            mojaLista.RemoveAt(model.indeks );
+            mojaLista.RemoveAt(model.indeks);
             model.zawartośćListy = string.Join("\n", mojaLista);
             onPropertyChanged(nameof(zawartośćListy));
         }
@@ -163,13 +164,13 @@ namespace CrudOwn.ModelWidoku
             {
                 if (edytuj == null)
                 {
-                    edytuj= new RelayCommand(PerformWyświetl);
+                    edytuj = new RelayCommand(PerformWyświetl);
                 }
                 return edytuj;
             }
         }
 
-        private void PerformWyświetl(object commandParameter) 
+        private void PerformWyświetl(object commandParameter)
 
         {
 
@@ -177,19 +178,63 @@ namespace CrudOwn.ModelWidoku
             model.mojaLista[model.indeks] = model.name;
             model.zawartośćListy = string.Join("\n", mojaLista);
             onPropertyChanged(nameof(zawartośćListy));
-           
+
 
             MessageBox.Show(model.indeks.ToString());
         }
 
         #endregion
+
+        #region zapisz
+        private RelayCommand zapisz;
+
+        public ICommand Zapisz
+        {
+            get
+            {
+                if (zapisz == null)
+                {
+                    zapisz = new RelayCommand(PerformZapisz);
+                }
+                return zapisz;
+            }
+        }
+        public void PerformZapisz(object commandParameter)
+        {
+            string sciezka = "plik.txt";
+
+            PlikXML.ZapiszDoPliku(sciezka, this.mojaLista);
+
+        }
+
+        #endregion
+
+
+        #region odczytaj
+        private RelayCommand odczytaj;
+        public ICommand Odczytaj
+        {
+            get
+            {
+                if (odczytaj == null)
+                {
+                    odczytaj= new RelayCommand(PerformOdczytaj);
+                }
+                return odczytaj;
+            }
+        }
+        public void PerformOdczytaj(object commandParameter)
+        {
+            string sciezka = "plik.txt";
+            mojaLista=PlikXML.OdczytajZPliku(sciezka);
+            model.zawartośćListy = string.Join("\n", mojaLista);
+            onPropertyChanged(nameof(zawartośćListy));
+            onPropertyChanged(nameof(mojaLista));
+        }
+
+
+        #endregion
     }
-
-
-
-
-
-
 }
 
 

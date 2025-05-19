@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CrudOwn.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -26,6 +27,13 @@ using System.Threading.Tasks;
             this.selectedItem = selectedItem;
             this.indeks = indeks;
     }
+
+
+
+
+   
+
+
     }
 
     

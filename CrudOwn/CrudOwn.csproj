@@ -74,6 +74,7 @@
     <Compile Include="ModelWidoku\ObservedObject.cs" />
     <Compile Include="ModelWidoku\RelayCommand.cs" />
     <Compile Include="Model\elementOne.cs" />
+    <Compile Include="Model\PlikXML.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
