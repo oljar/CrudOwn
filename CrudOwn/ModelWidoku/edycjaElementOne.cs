@@ -238,25 +238,10 @@ namespace CrudOwn.ModelWidoku
 
         #endregion
 
-        private string _textBoxContent;
-        public string TextBoxContent
-        {
-            get { return _textBoxContent; }
-            set
-            {
-                _textBoxContent = value;
-                onPropertyChanged(nameof(TextBoxContent));
-            }
-        }
+   
 
 
-        public ICommand ClearTextCommand { get; }
-
-
-        public edycjaElementOne()
-        {
-            ClearTextCommand = new RelayCommand(_ => ClearText());
-        }
+      
 
         private void ClearText()
         {
