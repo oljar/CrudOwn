@@ -125,6 +125,7 @@ namespace CrudOwn.ModelWidoku
             mojaLista.Add(model.name);
             model.zawartośćListy = string.Join("\n", mojaLista);
             onPropertyChanged(nameof(zawartośćListy));
+            this.ClearText();
 
         }
 
@@ -205,6 +206,8 @@ namespace CrudOwn.ModelWidoku
 
             PlikXML.ZapiszDoPliku(sciezka, this.mojaLista);
 
+            
+
         }
 
         #endregion
@@ -234,7 +237,46 @@ namespace CrudOwn.ModelWidoku
 
 
         #endregion
+
+        private string _textBoxContent;
+        public string TextBoxContent
+        {
+            get { return _textBoxContent; }
+            set
+            {
+                _textBoxContent = value;
+                onPropertyChanged(nameof(TextBoxContent));
+            }
+        }
+
+
+        public ICommand ClearTextCommand { get; }
+
+
+        public edycjaElementOne()
+        {
+            ClearTextCommand = new RelayCommand(_ => ClearText());
+        }
+
+        private void ClearText()
+        {
+            model.name = string.Empty;
+                onPropertyChanged(nameof(name));
+          
+        }
     }
+       
+
+
+    
+
+
+
+
+
+
+
+    
 }
 
 
