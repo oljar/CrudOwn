@@ -1,4 +1,6 @@
 ﻿using CrudOwn.Model;
+using CrudOwn.Services;
+using CrudOwn.Widok;
 using Kolory_WPF.ModelWidoku;
 using System;
 using System.Collections.Generic;
@@ -17,6 +19,8 @@ namespace CrudOwn.ModelWidoku
 
 
     public class edycjaElementOne : ObservedObject
+
+
     {
         public elementOne model = new elementOne("");
 
@@ -206,7 +210,7 @@ namespace CrudOwn.ModelWidoku
 
             PlikXML.ZapiszDoPliku(sciezka, this.mojaLista);
 
-            
+
 
         }
 
@@ -221,7 +225,7 @@ namespace CrudOwn.ModelWidoku
             {
                 if (odczytaj == null)
                 {
-                    odczytaj= new RelayCommand(PerformOdczytaj);
+                    odczytaj = new RelayCommand(PerformOdczytaj);
                 }
                 return odczytaj;
             }
@@ -229,7 +233,7 @@ namespace CrudOwn.ModelWidoku
         public void PerformOdczytaj(object commandParameter)
         {
             string sciezka = "plik.txt";
-            mojaLista=PlikXML.OdczytajZPliku(sciezka);
+            mojaLista = PlikXML.OdczytajZPliku(sciezka);
             model.zawartośćListy = string.Join("\n", mojaLista);
             onPropertyChanged(nameof(zawartośćListy));
             onPropertyChanged(nameof(mojaLista));
@@ -238,30 +242,101 @@ namespace CrudOwn.ModelWidoku
 
         #endregion
 
-   
-
-
-      
 
         private void ClearText()
         {
             model.name = string.Empty;
-                onPropertyChanged(nameof(name));
-          
+            onPropertyChanged(nameof(name));
+
         }
+
+        
+
+
+
+            private RelayCommand otworz;
+
+
+
+            public ICommand Otworz
+        {
+            get
+            {
+                if (otworz == null)
+                {
+                    otworz = new RelayCommand(Otwin);
+                }
+                return otworz;
+            }
+        }
+
+
+             
+
+        
+            public void Otwin(object commandParameter)
+            {
+        
+            var noweOkno = new NoweOkno();
+
+           
+            noweOkno.Show();
+          }
+
+        public RelayCommand zamknij;
+
+        public ICommand Zamknij
+        {
+            get
+            {
+                if (zamknij == null)
+                {
+                    zamknij = new RelayCommand(Zawin);
+                }
+                return zamknij;
+            }
+        }
+
+        public void Zawin(object commandParameter)
+        {
+            var service = new WindowService();
+            service.ZamknijOknoPoNazwie("NoweOkno1");
+
+        }
+
+
+
     }
-       
+
+
+        }
+
+            
+            
+        
+        
+
+
+            
+
+            
+            
+        
+      
+
+
+
+
+
+
+
 
 
     
 
 
 
-
-
-
-
     
-}
+
 
 
