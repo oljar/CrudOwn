@@ -277,7 +277,7 @@ namespace CrudOwn.ModelWidoku
             public void Otwin(object commandParameter)
             {
         
-            var noweOkno = new NoweOkno();
+            var noweOkno = new NoweOkno(this);
 
            
             noweOkno.Show();

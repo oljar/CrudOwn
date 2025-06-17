@@ -3,12 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CrudOwn.Widok"
+
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:mw="clr-namespace:CrudOwn.ModelWidoku"
         mc:Ignorable="d"
+        xmlns:local="clr-namespace:CrudOwn"
         Title="NoweOkno1" Height="450" Width="800"
         x:Name="NoweOkno1">
+    <mah:MetroWindow.DataContext>
+        <mw:edycjaElementOne/>
+    </mah:MetroWindow.DataContext> 
     <Grid>
-        
+        <ComboBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" ItemsSource="{Binding mojaLista}" SelectedItem="{Binding selectedItem, Mode=TwoWay}"/>
+
     </Grid>
 </mah:MetroWindow>

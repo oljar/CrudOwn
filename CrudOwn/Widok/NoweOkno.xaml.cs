@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using CrudOwn.ModelWidoku;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,14 @@ namespace CrudOwn.Widok
     /// </summary>
     public partial class NoweOkno : MetroWindow
     {
-        public NoweOkno()
+        public NoweOkno(edycjaElementOne vm)
         {
             InitializeComponent();
-
+            this.DataContext = vm;
         }
+
+        
+
+      
     }
 }
